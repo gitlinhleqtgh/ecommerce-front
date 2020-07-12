@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { signout,isAuthenticated } from '../auth'
-
+import {itemTotal} from './cartHelpers'
 
 const isActive = (history, path) => {
 
@@ -25,6 +25,16 @@ const Menu = withRouter(({ history }) => (
                 </Link>
             </li>
 
+            <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/shop")}
+                    to="/shop"
+                >
+                    Cửa Hàng
+                </Link>
+            </li>
+
             {isAuthenticated() && isAuthenticated().user.role === 0 && (
             <li className="nav-item">
                 <Link
@@ -32,7 +42,7 @@ const Menu = withRouter(({ history }) => (
                     style={isActive(history, "/user/dashboard")}
                     to="/user/dashboard"
                 >
-                    Trang Dashboard
+                    Tài Khoản 
                 </Link>
             </li>
            )}
@@ -44,7 +54,7 @@ const Menu = withRouter(({ history }) => (
                     style={isActive(history, "/admin/dashboard")}
                     to="/admin/dashboard"
                 >
-                    Trang Dashboard
+                    Trang Admin
                 </Link>
             </li>
            )}
@@ -85,6 +95,18 @@ const Menu = withRouter(({ history }) => (
 
             </li>
             )}
+            <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/cart")}
+                    to="/cart"
+                >
+                    Giỏ Hàng{" "}
+                    <sup>
+                        <small className="cart-badge">{itemTotal()}</small>
+                    </sup>
+                </Link>
+            </li>
         </ul>
 
     </div >

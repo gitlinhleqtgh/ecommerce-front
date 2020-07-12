@@ -3,30 +3,33 @@ import Layout from "../core/Layout";
 import { isAuthenticated } from '../auth'
 import { Link } from "react-router-dom";
 
+
 const AdminDashboard = () => {
 
-    const { user: {  name, email, role } } = isAuthenticated();
+    const { user: { _id, name, email, role } } = isAuthenticated();
 
     const adminLinks = () => {
         return (
             <div className="card">
-                <h4 className="card-header">Admin Links</h4>
+                <h4 className="card-header">Admin</h4>
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <Link className="nav-link" to="/create/category">Thêm thể loại</Link>
+                        <Link className="nav-link" to="/create/category">Thêm danh mục loại đèn</Link>
                     </li>
                     <li className="list-group-item">
-                        <Link className="nav-link" to="/create/product"> Thêm sản phẩm</Link>
+                        <Link className="nav-link" to="/create/product"> Thêm đèn mới</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link className="nav-link" to="/admin/products">Quản lý sản phẩm</Link>
                     </li>
                 </ul>
             </div>
-
         )
     }
     const adminInfo = () => {
         return (
             <div className="card mb-5">
-                <h3 className="card-header">Thông Tin Người Dùng</h3>
+                <h3 className="card-header">Thông Tin Tài Khoản</h3>
                 <ul className="list-group">
                     <li className="list-group-item">{name}</li>
                     <li className="list-group-item">{email}</li>
@@ -49,7 +52,7 @@ const AdminDashboard = () => {
                 </div>
                 <div className="col-9">
                     {adminInfo()}
-                  
+
                 </div>
             </div>
 

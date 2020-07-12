@@ -1,11 +1,14 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from '../auth'
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
 
-    const { user: {  name, email, role } } = isAuthenticated();
+    const { user: { _id,name, email, role } } = isAuthenticated();
+
+    const token = isAuthenticated().token;
+    
 
     const userLinks = () => {
         return (
@@ -16,7 +19,7 @@ const Dashboard = () => {
                         <Link className="nav-link" to="/cart">Giỏ Hàng</Link>
                     </li>
                     <li className="list-group-item">
-                        <Link className="nav-link" to="/profile/update"> Chỉnh Sửa Thông Tin Cá Nhân</Link>
+                        <Link className="nav-link" to={`/profile/${_id}`}> Chỉnh Sửa Thông Tin Cá Nhân</Link>
                     </li>
                 </ul>
             </div>
@@ -38,17 +41,6 @@ const Dashboard = () => {
         )
     }
 
-    const purchaseHistory = () => {
-        return (
-            <div className="card mb-5">
-                <h3 className="card-header">Lịch Sử Mua Hàng</h3>
-                <ul className="list-group">
-                    <li className="list-group-item">Lịch sử</li>
-                </ul>
-            </div>
-        )
-    }
-
     return (
         <Layout title="Trang quản lý" description={`Xin chào ${name}`}
             className="container-fluid"
@@ -59,7 +51,7 @@ const Dashboard = () => {
                 </div>
                 <div className="col-9">
                     {userInfo()}
-                    {purchaseHistory()}
+                    facebook
                 </div>
             </div>
 
