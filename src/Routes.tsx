@@ -15,6 +15,7 @@ import Cart from "./core/Cart";
 import Profile from "./user/Profile";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
+import GoogleSignInButton from "./user/GoogleSignInButton";
 
 const Routes: React.FunctionComponent = () => {
   return (
@@ -24,6 +25,7 @@ const Routes: React.FunctionComponent = () => {
         <Route path="/shop" exact component={Shop} />
         <Route path="/signin" exact component={Signin} />
         <Route path="/signup" exact component={Signup} />
+        <Route path="/signup-oauth2" exact component={GoogleSignInButton} />
         <PrivateRoute path="/user/dashboard" exact component={Dashboard} />
         <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
         <AdminRoute path="/create/category" exact component={AddCategory} />

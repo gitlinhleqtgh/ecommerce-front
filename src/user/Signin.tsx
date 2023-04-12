@@ -2,32 +2,33 @@ import React, { useState } from "react";
 import Layout from "../core/Layout";
 import { signin, authenticate, isAuthenticated } from "../auth";
 import { Redirect } from "react-router-dom";
+import GoogleSignInButton from "./GoogleSignInButton";
 
 const Signin: React.FunctionComponent = () => {
-  const [values, setValues] = useState({
+  const [user, setUser] = useState({
     email: "linhleqtgh@gmail.com",
     password: "linh",
     error: "",
     loading: false,
     redirectToReferrer: false,
   });
-  const { email, password, loading, error, redirectToReferrer } = values;
-  const { user } = isAuthenticated();
+  const { email, password, loading, error, redirectToReferrer } = user;
+  const { values } = isAuthenticated();
 
   const handleChange = (name) => (event) => {
-    setValues({ ...values, error: "", [name]: event.target.value });
+    setUser({ ...user, error: "", [name]: event.target.value });
   };
 
   const clickSubmit = (event) => {
     event.preventDefault();
-    setValues({ ...values, error: "", loading: true });
+    setUser({ ...user, error: "", loading: true });
     signin({ email, password }).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error, loading: false });
+        setUser({ ...user, error: data.error, loading: false });
       } else {
         authenticate(data, () => {
-          setValues({
-            ...values,
+          setUser({
+            ...user,
             redirectToReferrer: true,
           });
         });
@@ -58,6 +59,11 @@ const Signin: React.FunctionComponent = () => {
       <button onClick={clickSubmit} className="btn btn-primary">
         Submit
       </button>
+      <GoogleSignInButton
+        setUser={(user) => {
+          setUser({ ...user, edirectToReferrer: true });
+        }}
+      />
     </form>
   );
 

@@ -18,8 +18,6 @@ export const signup = (user) => {
 };
 
 export const signin = (user) => {
-  //  console.log(name, email, password);
-  debugger;
   return fetch(`${API}/signin`, {
     method: "POST",
     headers: {
@@ -36,9 +34,9 @@ export const signin = (user) => {
     });
 };
 
-export const authenticate = (data, next) => {
+export const authenticate = (token, next?) => {
   if (typeof window !== "undefined") {
-    localStorage.setItem("jwt", JSON.stringify(data));
+    localStorage.setItem("jwt", JSON.stringify(token));
     next();
   }
 };
@@ -62,7 +60,7 @@ export const isAuthenticated = () => {
     return false;
   }
   if (localStorage.getItem("jwt")) {
-    return JSON.parse(localStorage.getItem("jwt"));
+    return JSON.parse(localStorage.getItem("jwt") || "");
   } else {
     return false;
   }
