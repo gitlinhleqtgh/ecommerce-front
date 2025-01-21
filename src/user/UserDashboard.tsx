@@ -55,7 +55,6 @@ const Dashboard: React.FunctionComponent = () => {
         <div className="col-3">{userLinks()}</div>
         <div className="col-9">
           {userInfo()}
-          facebook
         </div>
       </div>
     </Layout>

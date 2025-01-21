@@ -21,7 +21,6 @@ const AddCategory: React.FunctionComponent = () => {
     e.preventDefault();
     setError("");
     setSuccess(false);
-    //tao request den api de tao category
     createCategory(user._id, token, { name }).then((data) => {
       if (data.error) {
         setError(data.error);
