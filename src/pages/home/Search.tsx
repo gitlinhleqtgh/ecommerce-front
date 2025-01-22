@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getCategories, list } from "./apiCore";
+import { getCategories, list } from "../../apis/home";
 import Card from "./Card";
 
 const Search: React.FunctionComponent = () => {

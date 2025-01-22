@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
-import { getProducts } from "./apiCore";
+import { getProducts } from "../../apis/home";
 import Card from "./Card";
-import { isAuthenticated } from "../auth";
+import { isAuthenticated } from "../../auth";
 import { Link } from "react-router-dom";
 
 const Checkout: React.FunctionComponent<{ products: any }> = ({ products }) => {

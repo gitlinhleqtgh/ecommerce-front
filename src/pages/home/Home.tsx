@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
-import { getProducts } from "./apiCore";
+import { getProducts } from "../../apis/home";
 import Card from "./Card";
 import Search from "./Search";
 

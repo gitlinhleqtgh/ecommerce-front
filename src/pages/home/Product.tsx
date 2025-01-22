@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
-import { read } from "./apiCore";
+import { read } from "../../apis/home";
 import Card from "./Card";
 
 const Product: React.FunctionComponent<any> = (props) => {

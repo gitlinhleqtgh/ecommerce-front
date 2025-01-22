@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "./Menu";
-import "../style.scss";
+import "../../style.scss";
 
 const Layout: React.FunctionComponent<{
   title: string;

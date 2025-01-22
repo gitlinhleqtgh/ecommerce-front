@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API, GOOGLE_CLIENT_ID } from "../config";
+import { API, GOOGLE_CLIENT_ID } from "../../config/config";
 import { Redirect } from "react-router";
 
 const GoogleSignInButton: React.FunctionComponent<{

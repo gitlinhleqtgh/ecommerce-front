@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../core/Layout";
-import { signup } from "../auth";
+import Layout from "../home/Layout";
+import { signup } from "../../auth";
 import { Link } from "react-router-dom";
 
 const Signup: React.FunctionComponent = () => {

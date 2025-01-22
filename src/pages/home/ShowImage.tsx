@@ -1,5 +1,5 @@
 import React from "react";
-import { API } from "../config";
+import { API } from "../../config/config";
 
 const ShowImage: React.FunctionComponent<any> = ({ item, url }) => (
   <div className="product-img">

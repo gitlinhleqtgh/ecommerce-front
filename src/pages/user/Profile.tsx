@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useReducer } from "react";
-import Layout from "../core/Layout";
-import { isAuthenticated } from "../auth";
+import Layout from "../home/Layout";
+import { isAuthenticated } from "../../auth";
 import { Link, Redirect } from "react-router-dom";
-import { read, update, updateUser } from "./apiUser";
+import { read, update, updateUser } from "../../apis/user";
 
 const Profile: React.FunctionComponent<any> = ({ match }) => {
-  //    return <h1>hi</h1>
   const [values, setValues] = useState({
     name: "",
     email: "",

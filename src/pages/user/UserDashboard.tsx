@@ -1,42 +1,39 @@
-import React from "react";
-import Layout from "../core/Layout";
-import { isAuthenticated } from "../auth";
+import React, { useState, useEffect } from "react";
+import Layout from "../home/Layout";
+import { isAuthenticated } from "../../auth";
 import { Link } from "react-router-dom";
 
-const AdminDashboard: React.FunctionComponent = () => {
+const Dashboard: React.FunctionComponent = () => {
   const {
     user: { _id, name, email, role },
   } = isAuthenticated();
 
-  const adminLinks = () => {
+  const token = isAuthenticated().token;
+
+  const userLinks = () => {
     return (
       <div className="card">
-        <h4 className="card-header">Admin</h4>
+        <h4 className="card-header">User Links</h4>
         <ul className="list-group">
           <li className="list-group-item">
-            <Link className="nav-link" to="/create/category">
-              Thêm danh mục loại đèn
+            <Link className="nav-link" to="/cart">
+              Giỏ Hàng
             </Link>
           </li>
           <li className="list-group-item">
-            <Link className="nav-link" to="/create/product">
+            <Link className="nav-link" to={`/profile/${_id}`}>
               {" "}
-              Thêm đèn mới
-            </Link>
-          </li>
-          <li className="list-group-item">
-            <Link className="nav-link" to="/admin/products">
-              Quản lý sản phẩm
+              Chỉnh Sửa Thông Tin Cá Nhân
             </Link>
           </li>
         </ul>
       </div>
     );
   };
-  const adminInfo = () => {
+  const userInfo = () => {
     return (
       <div className="card mb-5">
-        <h3 className="card-header">Thông Tin Tài Khoản</h3>
+        <h3 className="card-header">Thông Tin Người Dùng</h3>
         <ul className="list-group">
           <li className="list-group-item">{name}</li>
           <li className="list-group-item">{email}</li>
@@ -55,10 +52,12 @@ const AdminDashboard: React.FunctionComponent = () => {
       className="container-fluid"
     >
       <div className="row">
-        <div className="col-3">{adminLinks()}</div>
-        <div className="col-9">{adminInfo()}</div>
+        <div className="col-3">{userLinks()}</div>
+        <div className="col-9">
+          {userInfo()}
+        </div>
       </div>
     </Layout>
   );
 };
-export default AdminDashboard;
+export default Dashboard;

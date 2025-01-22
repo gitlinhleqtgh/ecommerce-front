@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import Layout from "../core/Layout";
-import { signin, authenticate, isAuthenticated } from "../auth";
+import Layout from "../home/Layout";
+import { signin, authenticate, isAuthenticated } from "../../auth";
 import { Redirect } from "react-router-dom";
 import GoogleSignInButton from "./GoogleSignInButton";
 
 const Signin: React.FunctionComponent = () => {
   const [user, setUser] = useState({
-    email: "linhleqtgh@gmail.com",
-    password: "linh",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     redirectToReferrer: false,
+    role: null,
   });
   const { email, password, loading, error, redirectToReferrer } = user;
   const { values } = isAuthenticated();

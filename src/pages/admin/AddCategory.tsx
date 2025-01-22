@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Layout from "../core/Layout";
-import { isAuthenticated } from "../auth";
-import { createCategory } from "./apiAdmin";
+import Layout from "../home/Layout";
+import { isAuthenticated } from "../../auth";
+import { createCategory } from "../../apis/admin";
 import { Link } from "react-router-dom";
 
 const AddCategory: React.FunctionComponent = () => {

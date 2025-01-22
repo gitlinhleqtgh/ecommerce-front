@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../core/Layout";
-import { isAuthenticated } from "../auth";
-import { createCategory } from "./apiAdmin";
+import Layout from "../home/Layout";
+import { isAuthenticated } from "../../auth";
+import { createCategory } from "../../apis/admin";
 import { Link } from "react-router-dom";
-import { getProducts, deleteProduct } from "./apiAdmin";
+import { getProducts, deleteProduct } from "../../apis/admin";
 
 const ManageProducts: React.FunctionComponent = () => {
   const [products, setProducts] = useState([]);
